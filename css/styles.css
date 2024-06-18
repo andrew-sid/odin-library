@@ -1,18 +1,20 @@
 :root.dark {
-  --border-btn: 1px solid rgb(220, 220, 220);
-  --color-base-bg: rgb(18, 18, 18);
+  --border-btn: 3px solid rgb(220, 220, 220);
+  --color-base-bg: #1e293b;
   --color-base-text: rgb(240, 240, 240);
-  --color-btn-bg: rgb(36, 36, 36);
+  --color-btn-bg: #1e293b;
+  --color-sec-bg: #242042;
 }
 
 :root.light {
-  --border-btn: 1px solid rgb(36, 36, 36);
+  --border-btn: 3px solid rgb(36, 36, 36);
   --color-base-bg: rgb(240, 240, 240);
   --color-base-text: rgb(18, 18, 18);
   --color-btn-bg: rgb(220, 220, 220);
+  --color-sec-bg: #26345229;
 }
 
-* {
+*:not(dialog) {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -22,21 +24,74 @@ ul {
   list-style: none;
 }
 
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
 body {
   background-color: var(--color-base-bg);
   color: var(--color-base-text);
   padding: 20px 50px;
+  font-family: sans-serif;
+  padding: 0 15px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  padding: 30px;
+  margin-bottom: 100px;
 }
 
 .header__themeBtn {
   width: 40px;
   height: 40px;
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 90vw;
+}
+
+.add-button-block {
+  margin-bottom: 50px;
+}
+
+.add-book-btn {
+  display: block;
+  border: var(--border-btn);
+  padding: 10px 20px;
+  color: var(--color-base-text);
+  font-size: 1.2rem;
+  margin: 0 auto;
+  width: 200px;
   cursor: pointer;
-  background-color: transparent;
-  border: none;
+}
+
+.books {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, 300px);
+  
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: 300px;
+  min-height: 350px;
+  border: var(--border-btn);
+  border-radius: 15px;
+  padding: 20px;
+  border-left: 10px solid red;
+  background-color: var(--color-sec-bg);
+}
+
+.book__isRead {
+  color: var(--color-base-text);
 }

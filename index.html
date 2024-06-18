@@ -9,15 +9,40 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="header__title">My Library</h1>
+      <h1 class="header__title">My Library &#128218;</h1>
       <button class="header__themeBtn js-theme-toggle">
-        <img src="./img/light-theme.svg" alt="Toggle theme">
+        <img src="./img/light-theme.svg" alt="Toggle theme" />
       </button>
     </header>
     <main class="main">
-      <ul class="books">
-        <li class="book"></li>
-      </ul>
+      <div class="add-button-block">
+        <button class="add-book-btn js-add-book-btn">Add book</button>
+      </div>
+      <ul class="books js-books"></ul>
     </main>
+    <dialog class="add-book-dialog js-add-book-dialog">
+      <form method="dialog">
+        <ul>
+          <li>
+            <label for="title">Title: </label>
+            <input class="dialog-title" type="text" id="title">
+          </li>
+          <li>
+            <label for="author">Author: </label>
+            <input class="dialog-author" type="text" id="author">
+          </li>
+          <li>
+            <label for="numsOfPage">Numbers of page: </label>
+            <input class="dialog-page-number" type="number" id="numsOfPage">
+          </li>
+          <li>
+            <label for="isRead">Read?: </label>
+            <input class="dialog-is-read" type="checkbox" id="isRead">
+          </li>
+        </ul>
+        <button type="reset" class="dialog-add js-dialog-add">Add</button>
+        <button type='reset' class="dialog-cancel js-dialog-cancel">Cancel</button>
+      </form>
+    </dialog>
   </body>
 </html>
