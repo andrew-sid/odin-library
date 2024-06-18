@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/styles.css">
-  <script src="./js/index.js" defer></script>
-  <title>My Library</title>
-</head>
-<body>
-  
-</body>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/index.js" defer></script>
+    <title>My Library</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">My Library</h1>
+      <button class="header__themeBtn js-theme-toggle">
+        <img src="./img/light-theme.svg" alt="Toggle theme">
+      </button>
+    </header>
+    <main class="main">
+      <ul class="books">
+        <li class="book"></li>
+      </ul>
+    </main>
+  </body>
 </html>
