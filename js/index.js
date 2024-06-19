@@ -35,15 +35,29 @@ function createBook({ title, author, numOfPages, isRead }) {
   return bookElem;
 }
 
-function addBookToLibrary() {
-  const title = document.querySelector('.dialog-title').value;
-  const author = document.querySelector('.dialog-author').value;
-  const numbersOfPage = document.querySelector('.dialog-page-number').value;
-  const isRead = document.querySelector('.dialog-is-read').checked ? true : false;
+function addBookToLibrary(event) {
+  event.preventDefault();
+  let title = document.querySelector('.dialog-title');
+  let author = document.querySelector('.dialog-author');
+  let numbersOfPage = document.querySelector('.dialog-page-number');
+  let isRead = document.querySelector('.dialog-is-read');
+  let isReadStatus = isRead.checked ? 'true' : 'false';
 
-  myLibrary.push(new Book(title, author, numbersOfPage, isRead));
+  if (title.value && author.value && numbersOfPage.value) {
+    myLibrary.push(new Book(title.value, author.value, numbersOfPage.value, isReadStatus));
+    renderLibrary();
 
-  renderLibrary();
+    //clear inputs
+    title.value = '';
+    author.value = '';
+    numbersOfPage.value = '';
+    isRead.checked = false;
+
+    return true;
+  } else {
+    alert('Please, enter a data!');
+    return false;
+  }
 }
 
 function renderLibrary() {
@@ -68,7 +82,7 @@ function renderLibrary() {
   }
 }
 
-//render current library on load page
+//render current library when page is load
 renderLibrary();
 
 //dialog functional
@@ -86,9 +100,8 @@ renderLibrary();
     bookDialog.close();
   });
 
-  dialogAddBtn.addEventListener('click', () => {
-    addBookToLibrary();
-    bookDialog.close();
+  dialogAddBtn.addEventListener('click', (event) => {
+    addBookToLibrary(event) ? bookDialog.close() : null;
   });
 })();
 
