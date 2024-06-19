@@ -62,7 +62,6 @@ function renderLibrary() {
     newBook.querySelector('.js-book__is-read').addEventListener('click', () => {
       myLibrary[i].isRead = myLibrary[i].isRead  ?  false : true;
       renderLibrary();
-      console.log(myLibrary);
     });
 
     books.appendChild(newBook);
