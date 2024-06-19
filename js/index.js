@@ -82,11 +82,8 @@ function renderLibrary() {
   }
 }
 
-//render current library when page is load
-renderLibrary();
-
 //dialog functional
-(function dialog() {
+function dialog() {
   const bookDialog = document.querySelector('.js-add-book-dialog');
   const addBookBtn = document.querySelector('.js-add-book-btn');
   const dialogAddBtn = document.querySelector('.js-dialog-add');
@@ -103,7 +100,7 @@ renderLibrary();
   dialogAddBtn.addEventListener('click', (event) => {
     addBookToLibrary(event) ? bookDialog.close() : null;
   });
-})();
+};
 
 // changing site theme functional
 function setTheme(event) {
@@ -116,3 +113,7 @@ function setTheme(event) {
 }
 
 document.querySelector('.js-theme-toggle').addEventListener('click', setTheme);
+
+//render current library and dialog listeners when page is load
+renderLibrary();
+dialog();
