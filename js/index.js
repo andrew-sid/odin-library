@@ -29,7 +29,7 @@ function createBook({ title, author, numOfPages, isRead }) {
     <h3 class="book__title">${title}</h3>
     <p class="book__author">${author}</p>
     <p><span class="book__num-of-pages">${numOfPages}</span> pages</p>
-    <button class="book__is-read">Read? ${isReadSymbol}</button>
+    <button class="book__is-read js-book__is-read">Read? ${isReadSymbol}</button>
     <button class=js-book__delete-btn>🗑️</button>
   `;
   return bookElem;
@@ -51,18 +51,23 @@ function renderLibrary() {
   books.innerHTML = '';
   for (let i = 0; i < myLibrary.length; i++) {
     let newBook = createBook(myLibrary[i]);
-    newBook.dataset.id = i;
 
+    // assign an id by which an element is deleted from the array and the page is re-rendered.
+    newBook.dataset.id = i;
     newBook.querySelector('.js-book__delete-btn').addEventListener('click', () => {
       myLibrary.splice(i, 1);
       renderLibrary();
     });
 
+    newBook.querySelector('.js-book__is-read').addEventListener('click', () => {
+      myLibrary[i].isRead = myLibrary[i].isRead  ?  false : true;
+      renderLibrary();
+      console.log(myLibrary);
+    });
+
     books.appendChild(newBook);
   }
 }
-
-
 
 //render current library on load page
 renderLibrary();
