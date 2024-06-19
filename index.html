@@ -22,26 +22,28 @@
     </main>
     <dialog class="add-book-dialog js-add-book-dialog">
       <form method="dialog">
-        <ul>
+        <ul class="add-book-dialog__list">
           <li>
             <label for="title">Title: </label>
-            <input class="dialog-title" type="text" id="title">
+            <input class="dialog-title" type="text" id="title" />
           </li>
           <li>
             <label for="author">Author: </label>
-            <input class="dialog-author" type="text" id="author">
+            <input class="dialog-author" type="text" id="author" />
           </li>
           <li>
             <label for="numsOfPage">Numbers of page: </label>
-            <input class="dialog-page-number" type="number" id="numsOfPage">
+            <input class="dialog-page-number" type="number" id="numsOfPage" />
           </li>
           <li>
             <label for="isRead">Read?: </label>
-            <input class="dialog-is-read" type="checkbox" id="isRead">
+            <input class="dialog-is-read" type="checkbox" id="isRead" />
           </li>
         </ul>
-        <button type="reset" class="dialog-add js-dialog-add">Add</button>
-        <button type='reset' class="dialog-cancel js-dialog-cancel">Cancel</button>
+        <div class="add-book-dialog__buttons">
+          <button type="reset" class="dialog-add js-dialog-add">Add</button>
+          <button type="reset" class="dialog-cancel js-dialog-cancel">Cancel</button>
+        </div>
       </form>
     </dialog>
   </body>
