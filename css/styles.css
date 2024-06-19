@@ -74,7 +74,6 @@ body {
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(auto-fit, 300px);
-  
 }
 
 .book {
@@ -92,6 +91,6 @@ body {
   background-color: var(--color-sec-bg);
 }
 
-.book__isRead {
+.book__is-read {
   color: var(--color-base-text);
 }

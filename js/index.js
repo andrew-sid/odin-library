@@ -28,25 +28,20 @@ function createBook({ title, author, numOfPages, isRead }) {
   bookElem.innerHTML = `
     <h3 class="book__title">${title}</h3>
     <p class="book__author">${author}</p>
-    <p><span class="book__numOfPages">${numOfPages}</span> pages</p>
-    <button class="book__isRead">Read? ${isReadSymbol}</button>
+    <p><span class="book__num-of-pages">${numOfPages}</span> pages</p>
+    <button class="book__is-read">Read? ${isReadSymbol}</button>
+    <button class=js-book__delete-btn>🗑️</button>
   `;
   return bookElem;
 }
 
 function addBookToLibrary() {
-  let title = document.querySelector('.dialog-title').value;
-  let author = document.querySelector('.dialog-author').value;
-  let numbersOfPage = document.querySelector('.dialog-page-number').value;
-  let isRead = document.querySelector('.dialog-is-read').checked ? true : false;
+  const title = document.querySelector('.dialog-title').value;
+  const author = document.querySelector('.dialog-author').value;
+  const numbersOfPage = document.querySelector('.dialog-page-number').value;
+  const isRead = document.querySelector('.dialog-is-read').checked ? true : false;
 
-  let book = new Book(title, author, numbersOfPage, isRead);
-  myLibrary.push(book);
-
-  title = '';
-  author = '';
-  numbersOfPage = '';
-  isRead = '';
+  myLibrary.push(new Book(title, author, numbersOfPage, isRead));
 
   renderLibrary();
 }
@@ -54,12 +49,22 @@ function addBookToLibrary() {
 function renderLibrary() {
   const books = document.querySelector('.books');
   books.innerHTML = '';
-  for (let book of myLibrary) {
-    let newBook = createBook(book);
+  for (let i = 0; i < myLibrary.length; i++) {
+    let newBook = createBook(myLibrary[i]);
+    newBook.dataset.id = i;
+
+    newBook.querySelector('.js-book__delete-btn').addEventListener('click', () => {
+      myLibrary.splice(i, 1);
+      renderLibrary();
+    });
+
     books.appendChild(newBook);
   }
 }
 
+
+
+//render current library on load page
 renderLibrary();
 
 //dialog functional
@@ -81,7 +86,7 @@ renderLibrary();
     addBookToLibrary();
     bookDialog.close();
   });
-}());
+})();
 
 // changing site theme functional
 function setTheme(event) {
