@@ -14,11 +14,13 @@ const myLibrary = [
   },
 ];
 
-function Book(title, author, numOfPages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.numOfPages = numOfPages;
-  this.isRead = isRead;
+class Book {
+  constructor(title, author, numOfPages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.numOfPages = numOfPages;
+    this.isRead = isRead;
+  }
 }
 
 function createBook({ title, author, numOfPages, isRead }) {
@@ -74,7 +76,7 @@ function renderLibrary() {
     });
 
     newBook.querySelector('.js-book__is-read').addEventListener('click', () => {
-      myLibrary[i].isRead = myLibrary[i].isRead  ?  false : true;
+      myLibrary[i].isRead = myLibrary[i].isRead ? false : true;
       renderLibrary();
     });
 
@@ -100,19 +102,22 @@ function dialog() {
   dialogAddBtn.addEventListener('click', (event) => {
     addBookToLibrary(event) ? bookDialog.close() : null;
   });
-};
-
-// changing site theme functional
-function setTheme(event) {
-  const root = document.documentElement;
-  const toggleBtn = event.target;
-  const newTheme = root.className === 'dark' ? 'light' : 'dark';
-  root.className = newTheme;
-
-  toggleBtn.src = `./img/${newTheme === 'dark' ? 'light-theme.svg' : 'dark-theme.svg'}`;
 }
 
-document.querySelector('.js-theme-toggle').addEventListener('click', setTheme);
+// changing site theme functional
+(function ColorTheme() {
+  const root = document.documentElement;
+  const toggleBtn = document.querySelector('.js-theme-toggle');
+
+  function setTheme() {
+    const newTheme = root.className === 'dark' ? 'light' : 'dark';
+    root.className = newTheme;
+
+    toggleBtn.src = `./img/${newTheme === 'dark' ? 'light-theme.svg' : 'dark-theme.svg'}`;
+  }
+
+  toggleBtn.addEventListener('click', setTheme);
+})();
 
 //render current library and dialog listeners when page is load
 renderLibrary();
